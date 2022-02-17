@@ -61,9 +61,10 @@ document.getElementById('save-button').addEventListener('click', function () {
 
     // calulating remaining amount 
     const remainingAmount = currentBalance - savingsAmount;
-    if (remainingAmount < savingsAmount) {
+    if (currentIncome < savingsAmount) {
         const checkBalance = document.getElementById('balance-error');
         checkBalance.style.visibility = 'visible';
+        document.getElementById('remainning-balance').innerText = 0;
     }
     else {
         // displaying remainning amount 
