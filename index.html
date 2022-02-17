@@ -94,6 +94,9 @@
             <!-- expence & balance report -->
             <div class="mt-8">
                 <h1 class="text-xl font-bold mb-2 text-center">Total Expence: <span id="total-expence">0</span></h1>
+                <div id="expence-error" class="alert-message m-4">
+                    <span class="rounded p-2 bg-red-100">Expence exceeds income!</span>
+                </div>
                 <h1 class="text-xl font-bold mb-2 text-center">Balance: <span id="balance-output">0</span></h1>
             </div>
 
@@ -118,6 +121,9 @@
                 <h1 class="text-xl font-bold mb-2 text-center">Saving amount: <span id="saving-amount">0</span></h1>
                 <h1 class="text-xl font-bold mb-2 text-center">Remaining balance: <span id="remainning-balance">0</span>
                 </h1>
+                <div id="balance-error" class="alert-message mt-4">
+                    <span class="rounded p-2 bg-red-100">You do not have enough money to save!</span>
+                </div>
             </div>
         </section>
 

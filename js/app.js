@@ -31,6 +31,10 @@ document.getElementById('calculate-button').addEventListener('click', function (
 
     // calculates and updates expence 
     const totalExpence = foodAmount + rentAmount + clotheAmount;
+    if(totalExpence > incomeAmount) {
+        const checkExpence = document.getElementById('expence-error');
+        checkExpence.style.visibility = 'visible';
+    }
     updateValues(totalExpence, 'total-expence');
 
     // calculates and updates balance 
@@ -46,11 +50,18 @@ document.getElementById('save-button').addEventListener('click', function () {
     // gets current balance from html text 
     const currentBalance = document.getElementById('balance-output').innerText;
 
+    // gets current income amount from the input field 
+    const currentIncome = getInput('income');
+
     // calculating savings 
-    const savingsAmount = parseFloat(currentBalance) * (savingsPercentage / 100);
+    const savingsAmount = currentIncome * (savingsPercentage / 100);
 
     // calulating remaining amount 
     const remainingAmount = currentBalance - savingsAmount;
+    if(remainingAmount < savingsAmount) {
+        const checkBalance = document.getElementById('balance-error');
+        checkBalance.style.visibility = 'visible';
+    }
 
     // displaying savings amount 
     document.getElementById('saving-amount').innerText = savingsAmount;
