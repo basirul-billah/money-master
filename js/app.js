@@ -3,7 +3,15 @@ function getInput(keyword) {
     const inputField = document.getElementById(keyword + '-input');
     const inputAmount = parseFloat(inputField.value);
 
-    return inputAmount;
+    const errorCheck = document.getElementById(keyword + '-error');
+
+    if (typeof inputAmount == 'number' && inputAmount >= 0) {
+        return inputAmount;
+    }
+    else {
+        errorCheck.style.visibility = 'visible';
+        return 0;
+    }
 }
 
 // updates fields
@@ -37,10 +45,10 @@ document.getElementById('save-button').addEventListener('click', function () {
 
     // gets current balance from html text 
     const currentBalance = document.getElementById('balance-output').innerText;
-    
+
     // calculating savings 
     const savingsAmount = parseFloat(currentBalance) * (savingsPercentage / 100);
-    
+
     // calulating remaining amount 
     const remainingAmount = currentBalance - savingsAmount;
 
