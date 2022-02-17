@@ -29,17 +29,20 @@ document.getElementById('calculate-button').addEventListener('click', function (
     const rentAmount = getInput('rent');
     const clotheAmount = getInput('clothe');
 
-    // calculates and updates expence 
+    // calculates and updates balance & expence 
     const totalExpence = foodAmount + rentAmount + clotheAmount;
-    if(totalExpence > incomeAmount) {
-        const checkExpence = document.getElementById('expence-error');
-        checkExpence.style.visibility = 'visible';
-    }
     updateValues(totalExpence, 'total-expence');
 
-    // calculates and updates balance 
     const balance = incomeAmount - totalExpence;
-    updateValues(balance, 'balance-output');
+    if (totalExpence > incomeAmount) {
+        const checkExpence = document.getElementById('expence-error');
+        checkExpence.style.visibility = 'visible';
+        updateValues(0, 'balance-output');
+    }
+    else {
+        updateValues(totalExpence, 'total-expence');
+        updateValues(balance, 'balance-output');
+    }
 })
 
 // calculating and displaying saving amount and remainning amount 
@@ -58,14 +61,15 @@ document.getElementById('save-button').addEventListener('click', function () {
 
     // calulating remaining amount 
     const remainingAmount = currentBalance - savingsAmount;
-    if(remainingAmount < savingsAmount) {
+    if (remainingAmount < savingsAmount) {
         const checkBalance = document.getElementById('balance-error');
         checkBalance.style.visibility = 'visible';
     }
-
+    else {
+        // displaying remainning amount 
+        document.getElementById('remainning-balance').innerText = remainingAmount;
+    }
     // displaying savings amount 
     document.getElementById('saving-amount').innerText = savingsAmount;
 
-    // displaying remainning amount 
-    document.getElementById('remainning-balance').innerText = remainingAmount;
 })
